@@ -4,6 +4,8 @@
 #include <ctime>
 #include <iostream>
 #include<string>
+#include <iomanip>
+#include <sstream>
 
 using std::string;
 
@@ -106,11 +108,27 @@ namespace UDateTime{
 	// - YYMD_hms: 19-4-27 7:1:10 p.m.
 	// - DMYY_hms: 27-4-19 7:1:10 p.m.
 	// - DMYY_Hms: 27-4-19 19:1:10
-	string ToFormat(const DateTime* dateTime, DateTimeFormat format);
+	string ToFormat(const DateTime* dateTime, DateTimeFormat format){
+		std::ostringstream oss;
+        switch (format) {
+            case YYYYMMDD_HHmmss:
+                oss << std::setfill('0') << std::setw(4) << dateTime->year << "-" << std::setw(2) << dateTime->month << "-" << std::setw(2) << dateTime->day << " " << std::setw(2) << dateTime->hour << ":" << std::setw(2) << dateTime->minute << ":" << std::setw(2) << dateTime->second;
+                break;
+            case YYYYMMDD_hhmmss:
+                oss << std::setfill('0') << std::setw(4) << dateTime->year << "-" << std::setw(2) << dateTime->month << "-" << std::setw(2) << dateTime->day << " " << ((dateTime->hour <= 12) ? std::setw(2) : std::setw(2) - 12) << ":" << std::setw(2) << dateTime->minute << ":" << std::setw(2) << dateTime->second << ((dateTime->hour < 12) ? " a.m." : " p.m.");
+                break;
+            // Agrega aquí los otros casos para los otros formatos.
+            default:
+                return "";
+        }
+        return oss.str();
+	}
 
 	// Precondicion: @dateTime es una instancia v�lida
 	// Postcondicion: Devuelve el a�o de @dateTime.
-	void DestroyDateTime(DateTime* dateTime);
+	void DestroyDateTime(DateTime* dateTime){
+		delete dateTime;
+	}
 }
 
 
