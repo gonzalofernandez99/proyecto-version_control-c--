@@ -26,7 +26,6 @@ namespace UDateTime{
         std::time_t now = std::time(0);
         std::tm* ltm = std::localtime(&now);
 
-      
         DateTime* dateTime = new DateTime;
 
         dateTime->year = 1900 + ltm->tm_year;
@@ -36,17 +35,15 @@ namespace UDateTime{
         dateTime->minute = ltm->tm_min;
         dateTime->second = ltm->tm_sec;
 
-        // Devolver el objeto DateTime
         return dateTime;
 	}
 
 	// Precondicion: Ninguna
 	// Postcondicion: Devuelve una instancia valida de DateTime para la fecha y hora especificada. Si @month, @day, @hour, @minute y @seconds, no se corresponden a una fecha y hora posible devuleve NULL
 	DateTime* CreateDateTime(unsigned int year = 2019, unsigned int month = 1, unsigned int day = 1, unsigned int hour=0, int minutes=0, int seconds=0){
-		// Crear un nuevo objeto DateTime
+		
         DateTime* dateTime = new DateTime;
-
-        // Configurar los valores de la fecha y la hora
+        
         dateTime->year = year;
         dateTime->month = month;
         dateTime->day = day;
@@ -54,9 +51,7 @@ namespace UDateTime{
         dateTime->minute = minutes;
         dateTime->second = seconds;
 
-        // Devolver el objeto DateTime
         return dateTime;
-    
 	}
 
 	// Precondicion: @dateTime es una instancia valida
