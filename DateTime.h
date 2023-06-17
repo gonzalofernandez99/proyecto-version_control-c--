@@ -152,6 +152,14 @@ namespace UDateTime{
                                 std::string(dateTime->minute < 10 ? "0" : "") + std::to_string(dateTime->minute)+
                                 std::string(dateTime->second < 10 ? "0" : "") + std::to_string(dateTime->second);
                 break;
+            case YYMD_Hms:
+                formatted_time = std::to_string(dateTime->year % 100) + "-" +
+                                std::to_string(dateTime->month) + "-" +
+                                std::to_string(dateTime->day) + " " +
+                                std::to_string(dateTime->hour) + ":" +
+                                std::to_string(dateTime->minute) + ":" +
+                                std::to_string(dateTime->second);
+                break;
             default:
                 return "";
         }
