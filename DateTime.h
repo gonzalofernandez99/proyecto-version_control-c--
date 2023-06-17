@@ -170,13 +170,21 @@ namespace UDateTime{
                                 (dateTime->hour < 12 ? " a.m." : " p.m.");
                 break;
             case DMYY_hms:
-                formatted_time = std::to_string(dateTime->year % 100) + "-" +
+                formatted_time = std::to_string(dateTime->day) + " " +
                                 std::to_string(dateTime->month) + "-" +
-                                std::to_string(dateTime->day) + " " +
+                                std::to_string(dateTime->year % 100) + "-" +
                                 std::to_string(dateTime->hour % 12) + ":" +
                                 std::to_string(dateTime->minute) + ":" +
                                 std::to_string(dateTime->second) +
                                 (dateTime->hour < 12 ? " a.m." : " p.m.");
+                break;
+            case DMYY_Hms:
+                formatted_time = std::to_string(dateTime->day) + " " +
+                                std::to_string(dateTime->month) + "-" +
+                                std::to_string(dateTime->year % 100) + "-" +
+                                std::to_string(dateTime->hour) + ":" +
+                                std::to_string(dateTime->minute) + ":" +
+                                std::to_string(dateTime->second);
                 break;
             default:
                 return "";
