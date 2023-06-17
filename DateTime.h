@@ -144,6 +144,14 @@ namespace UDateTime{
                                 std::string(dateTime->hour < 10 ? "0" : "") + std::to_string(dateTime->hour) + ":" +
                                 std::string(dateTime->minute < 10 ? "0" : "") + std::to_string(dateTime->minute) + ":" +
                                 std::string(dateTime->second < 10 ? "0" : "") + std::to_string(dateTime->second);
+			case YYYYMMDDHHmmss:
+                formatted_time = std::to_string(dateTime->year) +
+                                std::string(dateTime->month < 10 ? "0" : "") + std::to_string(dateTime->month)+
+                                std::string(dateTime->day < 10 ? "0" : "") + std::to_string(dateTime->day)+
+                                std::string(dateTime->hour < 10 ? "0" : "") + std::to_string(dateTime->hour)+
+                                std::string(dateTime->minute < 10 ? "0" : "") + std::to_string(dateTime->minute)+
+                                std::string(dateTime->second < 10 ? "0" : "") + std::to_string(dateTime->second);
+                break;
             default:
                 return "";
         }
