@@ -109,20 +109,32 @@ namespace UDateTime{
 	// - DMYY_hms: 27-4-19 7:1:10 p.m.
 	// - DMYY_Hms: 27-4-19 19:1:10
 	string ToFormat(const DateTime* dateTime, DateTimeFormat format){
-		std::ostringstream oss;
+		string formatted_time;
         switch (format) {
             case YYYYMMDD_HHmmss:
-                oss << std::setfill('0') << std::setw(4) << dateTime->year << "-" << std::setw(2) << dateTime->month << "-" << std::setw(2) << dateTime->day << " " << std::setw(2) << dateTime->hour << ":" << std::setw(2) << dateTime->minute << ":" << std::setw(2) << dateTime->second;
+                formatted_time = std::to_string(dateTime->year) + "-" +
+                                std::string(dateTime->month < 10 ? "0" : "") + std::to_string(dateTime->month) + "-" +
+                                std::string(dateTime->day < 10 ? "0" : "") + std::to_string(dateTime->day) + " " +
+                                std::string(dateTime->hour < 10 ? "0" : "") + std::to_string(dateTime->hour) + ":" +
+                                std::string(dateTime->minute < 10 ? "0" : "") + std::to_string(dateTime->minute) + ":" +
+                                std::string(dateTime->second < 10 ? "0" : "") + std::to_string(dateTime->second);
                 break;
             case YYYYMMDD_hhmmss:
-                oss << std::setfill('0') << std::setw(4) << dateTime->year << "-" << std::setw(2) << dateTime->month << "-" << std::setw(2) << dateTime->day << " " << ((dateTime->hour <= 12) ? std::setw(2) : std::setw(2) - 12) << ":" << std::setw(2) << dateTime->minute << ":" << std::setw(2) << dateTime->second << ((dateTime->hour < 12) ? " a.m." : " p.m.");
+                formatted_time = std::to_string(dateTime->year) + "-" +
+                                std::string(dateTime->month < 10 ? "0" : "") + std::to_string(dateTime->month) + "-" +
+                                std::string(dateTime->day < 10 ? "0" : "") + std::to_string(dateTime->day) + " " +
+                                std::string((dateTime->hour % 12) < 10 ? "0" : "") + std::to_string(dateTime->hour % 12) + ":" +
+                                std::string(dateTime->minute < 10 ? "0" : "") + std::to_string(dateTime->minute) + ":" +
+                                std::string(dateTime->second < 10 ? "0" : "") + std::to_string(dateTime->second) + 
+                                (dateTime->hour < 12 ? " a.m." : " p.m.");
                 break;
             // Agrega aquí los otros casos para los otros formatos.
             default:
                 return "";
         }
-        return oss.str();
-	}
+        return formatted_time;
+
+    }
 
 	// Precondicion: @dateTime es una instancia v�lida
 	// Postcondicion: Devuelve el a�o de @dateTime.
