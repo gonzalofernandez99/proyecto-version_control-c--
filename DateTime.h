@@ -128,7 +128,22 @@ namespace UDateTime{
                                 std::string(dateTime->second < 10 ? "0" : "") + std::to_string(dateTime->second) + 
                                 (dateTime->hour < 12 ? " a.m." : " p.m.");
                 break;
-            // Agrega aquí los otros casos para los otros formatos.
+            case DDMMYYYY_hhmmss:
+                formatted_time = std::string(dateTime->day < 10 ? "0" : "") + std::to_string(dateTime->day) + " " +
+                                std::string(dateTime->month < 10 ? "0" : "") + std::to_string(dateTime->month) + "-" +
+								std::to_string(dateTime->year) + "-" +
+                                std::string((dateTime->hour % 12) < 10 ? "0" : "") + std::to_string(dateTime->hour % 12) + ":" +
+                                std::string(dateTime->minute < 10 ? "0" : "") + std::to_string(dateTime->minute) + ":" +
+                                std::string(dateTime->second < 10 ? "0" : "") + std::to_string(dateTime->second) + 
+                                (dateTime->hour < 12 ? " a.m." : " p.m.");
+                break;
+            case DDMMYYYY_HHmmss:
+                formatted_time = std::string(dateTime->day < 10 ? "0" : "") + std::to_string(dateTime->day) + " " +
+                                std::string(dateTime->month < 10 ? "0" : "") + std::to_string(dateTime->month) + "-" +
+								std::to_string(dateTime->year) + "-" +
+                                std::string(dateTime->hour < 10 ? "0" : "") + std::to_string(dateTime->hour) + ":" +
+                                std::string(dateTime->minute < 10 ? "0" : "") + std::to_string(dateTime->minute) + ":" +
+                                std::string(dateTime->second < 10 ? "0" : "") + std::to_string(dateTime->second);
             default:
                 return "";
         }
