@@ -59,27 +59,39 @@ namespace UDateTime{
 
 	// Precondicion: @dateTime es una instancia valida
 	// Postcondicion: Devuelve el valor de @dateTime.
-	unsigned int GetYear(const DateTime* dateTime);
+	unsigned int GetYear(const DateTime* dateTime){
+		return dateTime->year;
+	}
 
 	// Precondicion: @dateTime es una instancia valida
 	// Postcondicion: Devuelve el mes de @dateTime, siendo un valor de 1 - 12 donde 1 es Enero y 12 es Diciembre
-	unsigned int GetMonth(const DateTime* dateTime);
+	unsigned int GetMonth(const DateTime* dateTime){
+		return dateTime->month;
+	}
 
 	// Precondicion: @dateTime es una instancia valida
 	// Postcondicion: Devuelve el dia de @dateTime.
-	unsigned int GetDay(const DateTime* dateTime);
+	unsigned int GetDay(const DateTime* dateTime){
+		return dateTime->day;
+	}
 
 	// Precondicion: @dateTime es una instancia valida
 	// Postcondicion: Devuelve la hora de @dateTime, siendo un valor entre 0 - 23
-	unsigned int GetHour(const DateTime* dateTime);
+	unsigned int GetHour(const DateTime* dateTime){
+		return dateTime->hour;
+	}
 
 	// Precondicion: @dateTime es una instancia valida
 	// Postcondicion: Devuelve los minutos de @dateTime, siendo un valor de 0 - 59
-	unsigned int GetMinutes(const DateTime* dateTime);
+	unsigned int GetMinutes(const DateTime* dateTime){
+		return dateTime->minute;
+	}
 
 	// Precondicion: @dateTime es una instancia valida
 	// Postcondicion: Devuelve los segundos de @dateTime.
-	unsigned int GetSeconds(const DateTime* dateTime);
+	unsigned int GetSeconds(const DateTime* dateTime){
+		return dateTime->second;
+	}
 
 	// Precondicion: @dateTime es una instancia valida
 	// Postcondicion: Devuelve @dateTime en el formato especificado por @format.
