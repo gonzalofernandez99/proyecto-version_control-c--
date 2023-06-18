@@ -5,39 +5,61 @@
 using std::string;
 
 namespace UUser{
-	struct User;
+	struct User{
+        std::string nickName;
+        std::string lastName;
+        std::string name;
+    };
 
 	// Precondicion: Ninguna
 	// Postdondicion: Crea una instancia valida de un User el cual tiene como nick name @nickName y
 	// un string vacio como nombre y como apellido
-	User* CreateUser(string nickName);
+	User* CreateUser(string nickName){
+		User* newUser = new User;
+        newUser->nickName = nickName;
+        newUser->lastName = "";
+        newUser->name = "";
+        return newUser;
+	}
 
 	// Precondicion: @user es una instancia valida
 	// Postcondicion: Devuelve el nick name de @user
-	string GetNickName(const User* user);
+	string GetNickName(const User* user){
+		return user->nickName;
+	}
 
 	// Precondicion: @user es una instancia valida
 	// Postcondicion: Devuelve el apellido de @user
-	string GetLastName(const User* user);
+	string GetLastName(const User* user){
+		return user->lastName;
+	}
 
 
 	// Precondicion: @user es una instancia valida
 	// Postcondicion: Devuelve el nombre de @user
-	string GetName(const User* user);
+	string GetName(const User* user){
+		return user->name;
+	}
 
 
 	// Precondicion: @user es una instancia valida
 	// Postcondicion: Cambia el nombre de @user por @name
-	void SetName(User* user, string name);
+	void SetName(User* user, string name){
+		user->name = name;
+	}
 
 
 	// Precondicion: @user es una instancia valida
 	// Postcondicion: Cambia el pellido de @user por @apellido
-	void SetLastName(User* user, string lastName);
+	void SetLastName(User* user, string lastName){
+		user->lastName = lastName;
+	}
 
 	// Precondicion: @user es una instancia valida
 	// Postcondicion: Libera todos los recursos asociados a @user
-	void DestroyUser(User* user);
+	void DestroyUser(User* user){
+		delete user;
+	}
 }
 
 #endif
