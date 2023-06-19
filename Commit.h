@@ -29,23 +29,34 @@ namespace UGit{
 
 	// Precondicion: @commit es una intancia valida
 	// Postcondicion: Devuelve la fecha y hora de creacion del @commit
-	DateTime* GetDate(const Commit* commit);
+	DateTime* GetDate(const Commit* commit){
+		return commit->date;
+		
+	}
 
 	// Precondicion: @commit es una intancia valida
 	// Postcondicion: Devuelve el usuario autor del @commit
-	User* GetAuthor(const Commit* commit);
+	User* GetAuthor(const Commit* commit){
+		return commit->author;
+	}
 
 	// Precondicion: @commit es una intancia valida
 	// Postcondicion: Devuelve el mensaje asociado al @commit
-	string GetMessage(const Commit* commit);
+	string GetMessage(const Commit* commit){
+		return commit->message;
+	}
 
 	// Precondicion: @commit es una intancia valida
 	// Postcondicion: Devuelve el commit predecesor de @commit
-	Commit* GetParent(const Commit* commit);
+	Commit* GetParent(const Commit* commit){
+		return commit->parent;
+	}
 
 	// Precondicion: @commit es una intancia valida
 	// Postcondicion: Devuelve el hash code de @commit
-	string GetHashCode(const Commit* commit);
+	string GetHashCode(const Commit* commit){
+		return commit->hashCode;
+	}
 
 	// Precondicion: @commit es una intancia valida
 	// Postcondicion: Devuelve los primero ocho caracteres del hash code de @commit
@@ -53,7 +64,9 @@ namespace UGit{
 
 	// Precondicion: @commit es una intancia valida
 	// Postcondicion: Libera todos los recursos asociados de @commit
-	void DestroyCommit(Commit* commit);
+	void DestroyCommit(Commit* commit){
+		delete commit;
+	}
 }
 
 #endif
