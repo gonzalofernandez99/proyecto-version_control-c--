@@ -4,11 +4,11 @@
 #include "User.h"
 #include "DateTime.h"
 
+
 using namespace std;
 using namespace UGit;
 using UDateTime::DateTime;
 using UDateTime::ToFormat;
-using UUser::User;
 
 struct Branch{
 	UGit::Commit* lastCommit;
