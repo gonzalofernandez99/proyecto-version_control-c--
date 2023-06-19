@@ -82,7 +82,9 @@ namespace UGit{
 
 	// Precondicion: @commit es una intancia valida
 	// Postcondicion: Devuelve los primero ocho caracteres del hash code de @commit
-	string GetShortHashCode(const Commit* commit);//8
+	string GetShortHashCode(const Commit* commit){
+		return commit->hashCode.substr(0, 8);
+	}
 
 	// Precondicion: @commit es una intancia valida
 	// Postcondicion: Libera todos los recursos asociados de @commit
