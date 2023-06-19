@@ -10,7 +10,13 @@ using UDateTime::DateTime;
 using UUser::User;
 
 namespace UGit{
-	struct Commit;
+	struct Commit{
+		Commit* parent;
+        string message;
+        DateTime* date;
+        User* author;
+        string hashCode;
+	};
 
 	// Precondicion: Ninguna
 	// Postdondicion: Crea una instancia valida de un Commit el cual debe tener
