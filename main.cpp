@@ -4,7 +4,6 @@
 #include "User.h"
 #include "DateTime.h"
 
-
 using namespace std;
 using namespace UGit;
 using UDateTime::DateTime;
