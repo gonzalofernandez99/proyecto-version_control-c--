@@ -8,6 +8,7 @@ using namespace std;
 using namespace UGit;
 using UDateTime::DateTime;
 using UDateTime::ToFormat;
+using UUser::User;
 
 struct Branch{
 	UGit::Commit* lastCommit;
@@ -27,6 +28,7 @@ int main() {
 	AddCommits(&head);
 	Log(&head);
 	DestroyAllCommits(&head);
+	
 	return 0;
 }
 
