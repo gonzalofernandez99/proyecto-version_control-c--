@@ -33,8 +33,11 @@ UDateTime::DateTime* UDateTime::Now(){
     return dateTime;
 }
 
-// Postcondicion: Devuelve una instancia v�lida de DateTime para la fecha y hora especificada. Si @month, @day, @hour, @minute y @seconds, no se corresponden a una fecha y hora posible devuleve NULL
+// Postcondicion: Devuelve una instancia valida de DateTime para la fecha y hora especificada. Si @month, @day, @hour, @minute y @seconds, no se corresponden a una fecha y hora posible devuleve NULL
 UDateTime::DateTime* CreateDateTime(unsigned int year, unsigned int month, unsigned int day, unsigned int hour, int minutes, int seconds){
+    if (month < 1 || month > 12 || day < 1 || day > 31 || hour > 23 || minutes > 59 || seconds > 59 || minutes < 0 || seconds < 0||hour < 0) {
+        return NULL;
+    }
 	DateTime* dateTime = new DateTime;
         
     dateTime->year = year;
