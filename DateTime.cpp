@@ -32,10 +32,33 @@ UDateTime::DateTime* UDateTime::Now(){
 
     return dateTime;
 }
+bool isLeapYear(int year) {
+    return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
+}
+bool IsValidDateHour(int day, int month, int year, int hours, int minutes, int seconds) {
+
+    if (year < 1 || month < 1 || month > 12 || day < 1) {
+        return false;
+    }
+
+    bool isLeap = isLeapYear(year);
+    int monthDays[] = {31, 28 + isLeap, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    int maxDays = monthDays[month - 1];
+
+    if(day > maxDays){
+        return false;
+    }
+    if (hours > 23 || minutes > 59 || seconds > 59 || minutes < 0 || seconds < 0||hours < 0) {
+        return false;
+    }
+    return true;
+}
 
 // Postcondicion: Devuelve una instancia valida de DateTime para la fecha y hora especificada. Si @month, @day, @hour, @minute y @seconds, no se corresponden a una fecha y hora posible devuleve NULL
 UDateTime::DateTime* CreateDateTime(unsigned int year, unsigned int month, unsigned int day, unsigned int hour, int minutes, int seconds){
-
+    if (!IsValidDateHour(day, month, year, hour, minutes, seconds)) {
+        return NULL;
+    }
 	DateTime* dateTime = new DateTime;
         
     dateTime->year = year;
