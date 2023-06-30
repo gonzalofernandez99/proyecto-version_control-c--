@@ -16,9 +16,9 @@ User* UContext::GetCurrentUser(){
 	return currentUser;
 }
 
-static DateTime* currentDateTime = NULL;
+static DateTime* currentDateTime = NULL; // esto no va
 
-// Correcto
+// Correcto dejar solo currentDateTime= UDateTime::Now();
 DateTime* UContext::GetNow(){
 	if (currentDateTime== NULL){
 	    currentDateTime= UDateTime::Now();
