@@ -16,23 +16,10 @@ User* UContext::GetCurrentUser(){
 	return currentUser;
 }
 
-static DateTime* currentDateTime = NULL; // esto no va
-
-// Correcto dejar solo currentDateTime= UDateTime::Now();
 DateTime* UContext::GetNow(){
-	if (currentDateTime== NULL){
-	    currentDateTime= UDateTime::Now();
-	}
-	return currentDateTime;    
+	return UDateTime::Now();    
 }
 
 void UContext::DestroyContext(){
-	if(currentUser != NULL){
-        UUser::DestroyUser(currentUser);
-        currentUser = NULL;
-    }
-    if(currentDateTime != NULL){
-        UDateTime::DestroyDateTime(currentDateTime);
-        currentDateTime = NULL;
-    }
+    UUser::DestroyUser(currentUser);
 }
