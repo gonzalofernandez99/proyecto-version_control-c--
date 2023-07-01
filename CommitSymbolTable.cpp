@@ -26,7 +26,7 @@ namespace UGit {
 			}
 			node = node->next;
 		}
-		return nullptr;  // Devuelve nulo si no se encuentra el hashCode
+		return nullptr; 
 	}
 
 	void AddCommit(CommitSymbolTable* table, Commit* commit) {
