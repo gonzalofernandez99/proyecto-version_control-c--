@@ -3,8 +3,9 @@
 
 #include <string>
 #include "Commit.h"
+using UGit::Commit;
 
-namespace UGit {
+namespace UDiccionario {
 
 	struct CommitSymbolTable;
 
